@@ -1,0 +1,33 @@
+.paginator-list {
+  display: flex;
+  column-gap: 10px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  width: 230px;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginator-item {
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.paginator-items {
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 10px 0px 10px 0px;
+  transition: all 0.3s ease; 
+}
+
+.paginator-items:hover {
+  color: rgb(220, 86, 197);
+  border: 1px solid rgb(220, 86, 197);
+}
