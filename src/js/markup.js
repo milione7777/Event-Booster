@@ -1,3 +1,4 @@
+import countries from './country.js';
 import Handlebars from 'handlebars';
 import refs from './getRefs';
 
@@ -65,3 +66,49 @@ refs.searchInput.addEventListener('keypress', event => {
 });
 
 renderAllCards();
+
+// Отримання елементів DOM
+const dropdown = document.querySelector('.dropdown');
+const countryInput = document.getElementById('countryes');
+const countryList = document.querySelector('.dropdown ul');
+const countryBtn = document.getElementById('countryes');
+const inputHeader = document.getElementById('countryes');
+
+// Заповнення випадаючого списку країнами
+function populateDropdown() {
+  countryList.innerHTML = '';
+  countries.forEach(({ alphaCode, name }) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = name;
+    listItem.dataset.code = alphaCode;
+    listItem.addEventListener('click', () => selectCountry(name, alphaCode));
+    countryList.appendChild(listItem);
+  });
+}
+
+// Функція вибору країни
+function selectCountry(name, alphaCode) {
+  countryInput.value = name;
+  dropdown.classList.remove('open');
+  countryBtn.classList.remove('rotated');
+    inputHeader.classList.remove('radius');
+  renderAllCards(alphaCode);
+}
+
+// Відкриття/закриття dropdown при кліці на кнопку
+countryBtn.addEventListener('click', () => {
+  dropdown.classList.toggle('open');
+  inputHeader.classList.toggle('radius');
+  populateDropdown();
+});
+
+// Закриття dropdown при кліці поза ним
+window.addEventListener('click', e => {
+  if (!dropdown.contains(e.target) && e.target !== countryBtn) {
+    dropdown.classList.remove('open');
+    countryBtn.classList.remove('rotated');
+  }
+});
+
+// Ініціалізація dropdown
+populateDropdown();
