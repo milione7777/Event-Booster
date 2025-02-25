@@ -1,0 +1,15 @@
+.footer-text {
+  text-align: center;
+  color: rgb(147, 147, 147);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 18px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.heart {
+  color: red;
+}
