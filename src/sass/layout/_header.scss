@@ -96,6 +96,8 @@
 }
 
 .input-header {
+  outline: none;
+  position: relative;
   width: 270px;
   height: 40px;
   border-radius: 20px;
@@ -121,13 +123,90 @@
   cursor: pointer;
 }
 
-.item-input-header:has(> .country-btn:active) .country-btn {
-  transform: rotate(180deg);
+.btn-country {
+  top: 18px;
+  right: 30px;
+  position: absolute;
+  background-image: url(../images/desktop-img/close-polygon.svg);
+  width: 20px;
+  height: 15px;
+  background-repeat: no-repeat;
 }
-.country-btn {
-  transition: transform 0.3s ease-in-out;
+
+.dropdown.open .btn-country {
+  background-image: url(../images/desktop-img/open-polygon.svg);
 }
 
 #country-btn {
   top: 2px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown ul {
+  display: none;
+  position: absolute;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  width: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+}
+.dropdown.open ul {
+  border: 0;
+  position: absolute;
+  width: 270px;
+  z-index: 5;
+  display: block;
+  top: 14px;
+  right: 4px;
+}
+.dropdown ul::-webkit-scrollbar {
+  width: 6px; /* Ширина скролла */
+  height: 10px;
+}
+
+.dropdown ul::-webkit-scrollbar-track {
+  display: none;
+}
+
+.dropdown ul::-webkit-scrollbar-thumb {
+  background: #999; /* Цвет ползунка */
+  border-radius: 10px; /* Закругленные края */
+}
+
+.dropdown ul::-webkit-scrollbar-thumb:hover {
+  background: #666; /* Цвет при наведении */
+}
+.input-header.radius {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.dropdown ul li {
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  padding: 2px 5px 2px 30px;
+  height: 25px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+
+.dropdown ul li:hover {
+  background-color: rgb(220, 86, 197);
+}
+.btn-country.rotated {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
