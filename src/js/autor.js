@@ -46,4 +46,4 @@ async function fetchEvents() {
   }
 }
 
-document.getElementById('more-autor').addEventListener('click', fetchEvents);
+// document.getElementById('more-autor').addEventListener('click', fetchEvents);
