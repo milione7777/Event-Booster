@@ -4,6 +4,7 @@ import refs from './getRefs';
 const BASE_URL = 'https://app.ticketmaster.com';
 const API_KEY = 'nGm4oZ3VNxvLAyNFXF3x88MrBbSefbXA';
 
+
 const modalTemplateSource = `
 <div class='modal-event-card' id='modal_product' data-event>
   <div class='event_content_icon'>
