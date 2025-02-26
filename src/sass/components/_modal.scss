@@ -35,3 +35,196 @@
   opacity: 1;
   visibility: visible;
 }
+
+.modal-event-card {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    padding-left: 36px;
+  }
+}
+
+.modal-foto {
+  width: 233px;
+  height: 416px;
+  @media screen and (min-width: 1280px) {
+    width: 360px;
+    height: 641px;
+    margin-top: 210px;
+    margin-top: 110px;
+  }
+}
+
+.modal-2-foto {
+  width: 102px;
+  height: 102px;
+  border-radius: 50px;
+  @media screen and (min-width: 768px) {
+    width: 70px;
+    height: 70px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+  }
+}
+
+.event_content_icon {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+}
+
+.allinfo_about_event {
+  padding: 12px;
+  @media screen and (min-width: 768px) {
+    margin-left: 30px;
+    padding: 0;
+  }
+}
+
+.main_img_conteiner {
+  margin-top: 63px;
+  margin-left: 74px;
+  margin-bottom: 18px;
+  @media screen and (min-width: 768px) {
+    margin-left: -50px;
+    margin-top: 28px;
+    margin-bottom: 40px;
+  }
+}
+
+.event_info,
+.event_date,
+.event_place,
+.event_headliner,
+.event_price {
+  margin-bottom: 10px;
+  font-size: 18px;
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+.event_place_title,
+.event_date_title,
+.event_info_title,
+.event_headliner_title,
+.event_price_title {
+  color: rgb(220, 86, 197);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+    margin-bottom: 7px;
+  }
+}
+
+.event_info_text,
+.event_date_text_up,
+.event_date_text,
+.event_place_text_up,
+.event_place_text,
+.event_headliner_text,
+.event_price_text {
+  color: rgb(14, 14, 14);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.description_event {
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    text-align-last: left;
+  }
+}
+
+.buy_tickets {
+  border: 1px solid rgb(76, 0, 254);
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 9px 19px;
+  border-radius: 5px;
+  background: rgb(76, 0, 254);
+  margin-top: 10px;
+}
+
+.close_modal_event {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+}
+
+.border-close-modal {
+  width: 2px;
+  border-radius: 8px;
+  height: 30px;
+  background: rgb(76, 0, 254);
+  transform: rotate(45deg);
+}
+
+.event-wrapper {
+  width: 243px;
+  height: 100px;
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 450px;
+    height: 64px;
+  }
+}
+
+.border-close-modal-two {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  border-radius: 8px;
+  height: 30px;
+  background: rgb(76, 0, 254);
+  transform: rotate(-45deg);
+}
+
+.event-margin {
+  margin-bottom: 25px;
+}
+
+.event_price_margin {
+  margin-top: 31px;
+  margin-bottom: 20px;
+}
+
+.more-from-autor {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 3px;
+  color: rgb(76, 0, 254);
+  font-size: 16px;
+  background: transparent;
+  font-weight: 500;
+  border: 1px solid rgb(76, 0, 254);
+  border-radius: 5px;
+  margin-top: 30px;
+  @media screen and (min-width: 768px) {
+    margin-top: 43px;
+    margin-left: -125px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: -90px;
+    margin-top: 120px;
+  }
+}

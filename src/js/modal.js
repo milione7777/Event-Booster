@@ -1,12 +1,15 @@
 import Handlebars from 'handlebars';
 import refs from './getRefs';
 
+const BASE_URL = 'https://app.ticketmaster.com';
+const API_KEY = 'nGm4oZ3VNxvLAyNFXF3x88MrBbSefbXA';
+
 const modalTemplateSource = `
 <div class='modal-event-card' id='modal_product' data-event>
   <div class='event_content_icon'>
  {{#if images.[0]}}
           <img
-            class=""
+            class="modal-foto"
             src="{{images.[0].url}}"
             alt="{{name}}"
             width="180"
@@ -19,7 +22,7 @@ const modalTemplateSource = `
     <div class='main_img_conteiner'>
        {{#if images.[0]}}
           <img
-            class=""
+            class="modal-2-foto"
             src="{{images.[0].url}}"
             alt="{{name}}"
             width="180"
@@ -32,9 +35,6 @@ const modalTemplateSource = `
       <div class='event_info'>
         <h2 class='event_info_title'>INFO</h2>
         <div class='event-wrapper'>
-          {{#if info}}
-            <p class='event_info_text'>{{info}}</p>
-          {{/if}}
           {{#if pleaseNote}}
             <p class='event_info_text'><strong></strong> {{pleaseNote}}</p>
           {{/if}}
@@ -65,20 +65,27 @@ const modalTemplateSource = `
         </div>
       {{/if}}
       {{#if priceRanges}}
-        <div class='event_price'>
+        <div class='event_price event-margin'>
           <h2 class='event_price_title'>PRICES</h2>
-          <p class='event_price_text'>{{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
+          <p class='event_price_text'>STANDART {{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
         </div>
         <a class='buy_tickets_wraper' href='{{url}}'><span class='buy_tickets'>BUY TICKETS</span></a>
+        <div class='event_price '>
+          <p class='event_price_text event_price_margin'>VIP {{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
+                  <a class='buy_tickets_wraper' href='{{url}}'><span class='buy_tickets'>BUY TICKETS</span></a>
+        </div>
       {{/if}}
+        <button class='more-from-autor' id='more-autor'>
+     MORE FROM THIS AUTHOR
+  </button>
     </div>
   </div>
   <button class='close_modal_event' id='close_modal_event' data-modal-close>
-
+     <div class='border-close-modal'></div>
+     <div class='border-close-modal-two'></div>
   </button>
 </div>
 `;
-
 
 const modalTemplate = Handlebars.compile(modalTemplateSource);
 
@@ -122,5 +129,53 @@ document.addEventListener('click', event => {
     event.target.matches('.backdrop-modal')
   ) {
     closeModal();
+  }
+});
+
+document.addEventListener('click', event => {
+  if (event.target.matches('#more-autor')) {
+    const modal = document.querySelector('.modal-event-card');
+    const authorName = modal
+      ?.querySelector('.event_headliner_text')
+      ?.textContent?.trim();
+    if (authorName) {
+      fetchAuthorEvents(authorName);
+    }
+  }
+});
+
+document.addEventListener('click', async event => {
+  if (!event.target.matches('#more-autor')) return;
+
+  const authorName = document.querySelector(
+    '.event_headliner_text'
+  )?.textContent;
+  if (!authorName) return;
+
+  try {
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=nGm4oZ3VNxvLAyNFXF3x88MrBbSefbXA&keyword=${authorName}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data._embedded?.events?.length) {
+      const eventListTemplate = Handlebars.compile(`
+        {{#each this}}
+          <li class="item-card-main">
+            <div>
+              {{#if images.[0]}}
+                <img class="img-card" src="{{images.[0].url}}" alt="{{name}}" width="180" height="120" />
+              {{/if}}
+            </div>
+            <h2 class="name-card">{{name}}</h2>
+            <p class="dates-card"><b></b> {{dates.start.localDate}}</p>
+            <p class="country-card">{{_embedded.venues.[0].city.name}}, {{_embedded.venues.[0].country.name}}</p>
+          </li>
+        {{/each}}
+      `);
+
+      refs.listCards.innerHTML = eventListTemplate(data._embedded.events);
+    }
+  } catch (error) {
+    console.error('Помилка отримання подій автора:', error);
   }
 });
