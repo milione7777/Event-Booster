@@ -167,8 +167,11 @@
   width: 270px;
   z-index: 5;
   display: block;
-  top: 14px;
-  right: 4px;
+  top: -15px;
+  @media screen and (min-width: 768px) {
+    top: 14px;
+    right: 4px;
+  }
 }
 .dropdown ul::-webkit-scrollbar {
   width: 6px; /* Ширина скролла */
