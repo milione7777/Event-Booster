@@ -70,10 +70,14 @@ const modalTemplateSource = `
           <h2 class='event_price_title'>PRICES</h2>
           <p class='event_price_text'>STANDART {{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
         </div>
-        <a class='buy_tickets_wraper' href='{{url}}'><span class='buy_tickets'>BUY TICKETS</span></a>
+        <a target="_blank" class='buy_tickets_wraper' href='{{url}}'>
+        <span class='buy_tickets'>BUY TICKETS</span>
+        </a>
         <div class='event_price '>
-          <p class='event_price_text event_price_margin'>VIP {{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
-                  <a class='buy_tickets_wraper' href='{{url}}'><span class='buy_tickets'>BUY TICKETS</span></a>
+          <p  class='event_price_text event_price_margin'>VIP {{priceRanges.[0].min}} - {{priceRanges.[0].max}} {{priceRanges.[0].currency}}</p>
+                  <a target="_blank" class='buy_tickets_wraper' href='{{url}}'>
+                  <span class='buy_tickets'>BUY TICKETS</span>
+                  </a>
         </div>
       {{/if}}
         <button class='more-from-autor' id='more-autor'>
